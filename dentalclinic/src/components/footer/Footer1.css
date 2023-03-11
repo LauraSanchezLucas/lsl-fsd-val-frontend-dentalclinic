@@ -1,0 +1,13 @@
+.icons{
+    align-items: center;
+    display: flex;
+    justify-content:center;
+    gap: 2em;
+}
+.main-footer{
+    background-color: rgba(160, 149, 149, 0.585);
+    position:fixed;
+    left:0;
+    bottom:0;
+    right:0;
+}

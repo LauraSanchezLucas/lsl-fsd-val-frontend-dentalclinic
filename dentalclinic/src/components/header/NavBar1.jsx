@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import './NavBar1.css'
 import Image from "react-bootstrap/Image";
 import logo from "../../assets/logo.png"
-{/* <Image className="logoImage zoomLogo" src={logo}></Image> */}
 
 export const NavBar1 = () => {
   return (
