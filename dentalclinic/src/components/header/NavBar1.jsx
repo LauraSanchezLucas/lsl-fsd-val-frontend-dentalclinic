@@ -19,7 +19,7 @@ export const NavBar1 = () => {
           <Nav>
           <Nav.Link as={Link} to="/treatments">Treatments</Nav.Link>
             <Nav.Link as={Link} to="/" className='size'>About us</Nav.Link>
-            <Nav.Link as={Link} to="/">Login</Nav.Link>
+            <Nav.Link as={Link} to="/login">Login</Nav.Link>
             <Nav.Link as={Link} to="/">Register</Nav.Link>
           </Nav>
         </Navbar.Collapse>
