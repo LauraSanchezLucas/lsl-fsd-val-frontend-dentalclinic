@@ -1,7 +1,11 @@
+import { NavBar1 } from "../components/header/NavBar1"
+
 
 
 export const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <NavBar1/>
+    </>
   )
 }
