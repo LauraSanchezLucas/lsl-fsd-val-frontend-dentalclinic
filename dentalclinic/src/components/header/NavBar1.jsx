@@ -5,12 +5,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import './NavBar1.css'
 import Image from "react-bootstrap/Image";
-import logo from "../../assets/logo.png"
-{/* <Image className="logoImage zoomLogo" src={logo}></Image> */}
+import logo from "../../assets/yo.png"
 
 export const NavBar1 = () => {
   return (
-    <Navbar sticky="top" collapseOnSelect expand="md" bg="secondary" variant="dark">
+    <Navbar sticky="top" collapseOnSelect expand="md" className='header-NavBar'>
       <Container>
         <Container>
           <Nav.Link as={Link} to="/"><Image className="logo" src={logo}></Image></Nav.Link>
@@ -18,7 +17,7 @@ export const NavBar1 = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
-          <NavDropdown title="Treatments" id="collasible-nav-dropdown">
+          <NavDropdown title="Treatments" id="collasible-nav-dropdown" className='color-navbar'>
               <NavDropdown.Item href="#action/3.1">Implant</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Prothesis</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Orthodontic</NavDropdown.Item>
@@ -34,8 +33,5 @@ export const NavBar1 = () => {
     </Navbar>
   )
 }
-
-
-
 
 
