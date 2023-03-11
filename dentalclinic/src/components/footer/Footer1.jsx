@@ -2,7 +2,7 @@ import './Footer1.css'
 
 export const Footer1 = () => {
   return (
-    <div className="main-footer" fixed="bottom">
+    <div className="main-footer">
         <div className="container-footer">
             <div className="row text-center">
                 {/* Colum 1 */}
