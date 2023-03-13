@@ -1,18 +1,23 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./layout/Home";
+import { Footer1 } from "./components/footer/Footer1";
+import { NavBar1 } from "./components/header/NavBar1";
+import { Home } from "./layout/home/Home";
 import { Login } from "./layout/login/Login";
+import { Register } from "./layout/register/Register";
 import { Treatments } from "./layout/treatment/Treatment";
-
-
+import "./MainApp.css"
 
 export const MainApp = () => {
   return (
-    <>
-    <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/treatments" element={<Treatments/>}/>
-        <Route path="/login" element={<Login/>}/>
-    </Routes>
-    </>
-  )
-}
+    <div>
+      <NavBar1 />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/treatments" element={<Treatments />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+      <Footer1/>
+    </div>
+  );
+};

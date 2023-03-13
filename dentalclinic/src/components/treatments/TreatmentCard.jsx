@@ -5,8 +5,9 @@ import Container from 'react-bootstrap/esm/Container';
 
 export const TreatmentCard = ({treatment}) => {
   return (
-    <Container className="yo">
-      <Card>
+  
+    <Container >
+      <Card className="yo">
         {/* <Card.Img variant="top" src={personaje.image}/> */}
         <Card.Body>
           <Card.Title>{treatment.treatment}</Card.Title>
@@ -15,5 +16,6 @@ export const TreatmentCard = ({treatment}) => {
         </Card.Body>
       </Card>
     </Container>
+  
   )
 }

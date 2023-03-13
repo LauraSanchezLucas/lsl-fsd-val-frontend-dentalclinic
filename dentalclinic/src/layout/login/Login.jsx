@@ -33,7 +33,6 @@ export const Login = () => {
         }
   return (
     <>
-    <NavBar1/>
     <Container className='main main-size'>
       <Form>
       <h1>Login</h1>

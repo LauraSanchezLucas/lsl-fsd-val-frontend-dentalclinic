@@ -9,6 +9,7 @@ import logo from "../../assets/yo.png"
 
 export const NavBar1 = () => {
   return (
+    <div className='navBarAll'>
     <Navbar sticky="top" collapseOnSelect expand="md" className='header-NavBar'>
       <Container>
         <Container>
@@ -20,11 +21,12 @@ export const NavBar1 = () => {
           <Nav.Link as={Link} to="/treatments">Treatments</Nav.Link>
             <Nav.Link as={Link} to="/" className='size'>About us</Nav.Link>
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
-            <Nav.Link as={Link} to="/">Register</Nav.Link>
+            <Nav.Link as={Link} to="/register">Register</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </div>
   )
 }
 

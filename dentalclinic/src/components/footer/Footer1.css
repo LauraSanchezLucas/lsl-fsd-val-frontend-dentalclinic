@@ -6,9 +6,10 @@
 }
 .main-footer{
     background-color: rgba(105, 188, 226, 0.585);
-    position:fixed;
-    left:0;
-    bottom:0;
-    right:0;
-    
+    position:relative;
+}
+.su{
+    height:10em;
+    bottom:0px;
+    width:100%;
 }

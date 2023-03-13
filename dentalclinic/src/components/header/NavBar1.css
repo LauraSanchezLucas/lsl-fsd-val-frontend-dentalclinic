@@ -5,9 +5,7 @@
     width: 7em;
 }
 .header-NavBar{
-    background-color: rgba(105, 188, 226, 0.585);
-    
+    background-color: rgba(105, 188, 226, 0.585); 
+    height: 5em;
 }
-/* .color-navbar{
-    color: black !important;
-} */
+

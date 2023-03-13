@@ -2,7 +2,8 @@ import './Footer1.css'
 
 export const Footer1 = () => {
   return (
-    <div className="main-footer">
+    <div className='su'>
+    <div className="main-footer ">
         <div className="container-footer">
             <div className="row text-center">
                 {/* Colum 1 */}
@@ -28,11 +29,12 @@ export const Footer1 = () => {
             </div>
             {/* Footer Bottom */}
             <div className="footer-bottom text-center">
-                <p className="text-xs-center">
+                <p className="text-xs-center mb-0">
                     &copy;{new Date().getFullYear()} City Guide App - All Rights Reserved
                 </p>
             </div>
         </div>
+    </div>
     </div>
   )
 }

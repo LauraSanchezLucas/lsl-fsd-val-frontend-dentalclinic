@@ -1,0 +1,22 @@
+.buttonRegister{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonSize{
+    width: 15em;
+    margin-bottom: 1em;
+}
+
+.inputlogin:hover{
+    background-color: rgb(219, 239, 247);
+    cursor: pointer;
+}
+.main_register{
+    background-image: url(../../assets/register.jpg);
+    background-size:cover;
+    background-position: center;
+    height: 85vh;
+}
+
+
