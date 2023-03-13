@@ -12,7 +12,7 @@ export const Register = () => {
           <Form>
               <Row className="mb-3">
                   <Form.Group as={Col} controlId="formGridEmail">
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label variant='white'>Name</Form.Label>
                   <Form.Control className='inputlogin' type="name" name='name' placeholder="Enter name" />
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridSurname">
@@ -47,6 +47,6 @@ export const Register = () => {
               </div>
           </Form>
       </Container>
-    </div>
+      </div>
   );
 }

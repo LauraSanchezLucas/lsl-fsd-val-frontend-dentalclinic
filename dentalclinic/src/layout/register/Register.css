@@ -17,6 +17,14 @@
     background-size:cover;
     background-position: center;
     height: 85vh;
+    color:white;
 }
+
+/* form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} */
 
 
