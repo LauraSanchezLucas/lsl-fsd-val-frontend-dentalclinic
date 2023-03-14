@@ -33,13 +33,3 @@ export const DataBase = [
     }
 
 ];
-  
-
-
-
-
-
-
-
-     
-   
