@@ -9,7 +9,7 @@ export const Register = () => {
   return (
     <div className='main_register'>
       <Container>
-          <Form>
+          <Form className='formularioRegistro'>
               <Row className="mb-3">
                   <Form.Group as={Col} controlId="formGridEmail">
                   <Form.Label variant='white'>Name</Form.Label>
