@@ -3,9 +3,119 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import { InputText } from '../../components/inputText/InputText';
 import './Register.css'
+import React, { useState, useEffect } from "react";
+import { Helpers } from "../../helpers/Helpers";
 
 export const Register = () => {
+    
+  //HOOK
+  const [credential, setCredential] = useState({
+    name: "",
+    surname: "",
+    nif: "",
+    direction: "",
+    email: "",
+    birth_date: "",
+    phone: "",
+  });
+
+  //HANDLERS
+
+  const inputHandler = (e) => {
+    setCredential((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+      
+    }));
+  };
+
+// Hook validation
+  const [validationCredential, setValidationCredential] = useState({
+    nameValidation: false,
+    surnameValidation: false,
+    nifValidation: false,
+    directionValidation: false,
+    emailValidation: false,
+    // birth_dateValidation: false,
+    phoneValidation: false,
+  })
+// Hook error
+  const [credentialError, setCredentialError] = useState({
+    nameError: "",
+    surnameError: "",
+    nifError: "",
+    directionError: "",
+    emailError: "",
+    // birth_dateError: "",
+    phoneError: "",
+  });
+
+  const [registerAct, setRegisterAct] = useState(false);
+
+  //USEEFFECT
+
+  //Este tipo de useEffect siempre se ejecuta cuando se actualice cualquier hook.....
+  useEffect(() => {
+      console.log(credential)
+    //Recorremos el primer for in para ver si hay errores en las credenciales....
+    for(let error in credentialError){
+      if(credentialError[error] !== ""){
+        setRegisterAct(false);
+        return;
+      }
+    }
+    //Recorremos las credenciales con otro for in para comprobar en este caso si algún campo se ha dejado por rellenar...
+    for(let empty in credential){
+      if(credential[empty] === ""){
+        setRegisterAct(false);
+        return;
+      }
+    }
+
+    //El último cortafuegos será un for in que recorrerá el hook validationCredential que mirará si todas las credential no sólo
+    //están rellenas, sino que también han sido validadas
+    for(let Helpers in validationCredential){
+      if(validationCredential[Helpers] === false){
+        setRegisterAct(false);
+        return;
+      }
+    }
+    //si llegamos a este punto es porque no hemos encontrado ningún error en el for in que recorre el hook de errores
+    setRegisterAct(true);
+  });
+
+  //FUNCIONES
+  //Funcion de validacion
+
+  const checkError = (e) => {
+
+    let error = "";
+
+    let checked = Helpers(
+      e.target.name,
+      e.target.value,
+      e.target.required
+    );
+
+    error = checked.message;
+
+    setValidationCredential((prevState) => ({
+      ...prevState,
+      [e.target.name + "Validation"]: checked.Helpers,
+    }));
+
+    //Aqui seteamos el hook de los errores
+
+    setCredentialError((prevState) => ({
+      ...prevState,
+      [e.target.name + "Error"]: error,
+    }));
+  };
+  const fakeRegister = () => {
+    console.log("victoria");
+  };
   return (
     <div className='main_register'>
       <Container>
@@ -13,37 +123,93 @@ export const Register = () => {
               <Row className="mb-3">
                   <Form.Group as={Col} controlId="formGridEmail">
                   <Form.Label variant='white'>Name</Form.Label>
-                  <Form.Control className='inputlogin' type="name" name='name' placeholder="Enter name" />
+                  <InputText
+                    className={"inputlogin"}
+                    type={"text"} 
+                    name={"name"} 
+                    placeholder={"Enter name"} 
+                    changeFunction ={(e)=>inputHandler(e)}
+                    blurFunction={(e) => checkError(e)}
+                    />
+                    <div className='red'>{credentialError.nameError}</div>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridSurname">
                   <Form.Label>Surname</Form.Label>
-                  <Form.Control className='inputlogin' type="surname" name='surname' placeholder="Enter suname" />
+                  <InputText
+                    className={"inputlogin"}
+                    type={"text"} 
+                    name={"surname"} 
+                    placeholder={"Enter surname"} 
+                    changeFunction ={(e)=>inputHandler(e)}
+                    blurFunction={(e) => checkError(e)}
+                    />
+                    <div className='red'>{credentialError.surnameError}</div>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridNif">
                   <Form.Label>Nif</Form.Label>
-                  <Form.Control className='inputlogin' type="nif" name='nif' placeholder="Enter nif"  />
+                  <InputText
+                    className={"inputlogin"}
+                    type={"text"} 
+                    name={"nif"} 
+                    placeholder={"Enter nif"} 
+                    changeFunction ={(e)=>inputHandler(e)}
+                    blurFunction={(e) => checkError(e)}
+                    />
+                    <div className='red'>{credentialError.nifError}</div>
                   </Form.Group>
               </Row>
               <Form.Group className="mb-3" controlId="formGridAddress2">
                   <Form.Label>Address</Form.Label>
-                  <Form.Control className='inputlogin' type="direction" name='direction' placeholder="Enter adress" />
+                  <InputText
+                    className={"inputlogin"}
+                    type={"text"} 
+                    name={"direction"} 
+                    placeholder={"Enter adress"} 
+                    changeFunction ={(e)=>inputHandler(e)}
+                    blurFunction={(e) => checkError(e)}
+                    />
+                    <div className='red'>{credentialError.adressError}</div>
               </Form.Group>
               <Row className="mb-3">
                   <Form.Group as={Col} controlId="formGridCity">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control className='inputlogin' type="email" name='email' placeholder="Enter email"/>
+                  <InputText
+                    className={"inputlogin"}
+                    type={"email"} 
+                    name={"email"} 
+                    placeholder={"Enter emil"} 
+                    changeFunction ={(e)=>inputHandler(e)}
+                    blurFunction={(e) => checkError(e)}
+                    />
+                    <div className='red'>{credentialError.emailError}</div>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridState">
                   <Form.Label>Birth date</Form.Label>
-                  <Form.Control className='inputlogin' type="birth_date" name='birth_date' placeholder="Enter birth date"  />
+                  <InputText
+                    className={"inputlogin"}
+                    type={"date"} 
+                    name={"birth_date"} 
+                    placeholder={"Enter birth of date"} 
+                    changeFunction ={(e)=>inputHandler(e)}
+                    blurFunction={(e) => checkError(e)}
+                    />
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridZip">
                   <Form.Label>Phone</Form.Label>
-                  <Form.Control className='inputlogin' type="phone" name='phone' placeholder="Enter phone" />
+                  <InputText
+                    className={"inputlogin"}
+                    type={"text"} 
+                    name={"phone"} 
+                    placeholder={"Enter phone"} 
+                    changeFunction ={(e)=>inputHandler(e)}
+                    blurFunction={(e) => checkError(e)}
+                    />
+                    <div className='red'>{credentialError.phoneError}</div>
                   </Form.Group>
               </Row>
               <div className="buttonRegister">
-              <Button variant="primary" type="submit" className='buttonSize'>Submit</Button>
+              <Button onClick={registerAct ? () => {fakeRegister();}: () => {}} variant="primary">Submit</Button>
+                              {/* registerAct ? () => { fakeRegister(); } : () => {}} */}
               </div>
           </Form>
       </Container>
