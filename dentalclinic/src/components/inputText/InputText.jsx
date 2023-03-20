@@ -1,6 +1,6 @@
 import Form from "react-bootstrap/Form";
 
-export const InputText = ( {className, type, name, placeholder, changeFunction} ) => {
+export const InputText = ( {className, type, name, placeholder, changeFunction, blurFunction } ) => {
     return (
       <>
       <Form.Control
@@ -8,6 +8,8 @@ export const InputText = ( {className, type, name, placeholder, changeFunction} 
       type={type}
       name={name}
       placeholder={placeholder}
+      onChange={(e) => changeFunction(e)}
+      onBlur={(e) => blurFunction(e)}
       />
       </>
     )

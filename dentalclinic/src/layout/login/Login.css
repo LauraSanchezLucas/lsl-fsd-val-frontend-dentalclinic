@@ -2,10 +2,11 @@
     display: flex;
     justify-content: center;
     height: 29.5em;
-   
 }
-
 .buttonSubmit{
     margin-left: 35%;
     width: 30%;
+}
+.red{
+    color: red;
 }
