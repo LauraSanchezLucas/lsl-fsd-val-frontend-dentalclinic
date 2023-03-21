@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 export const Helpers = (name, data, required) => {
     switch (name) {
       case "name":
@@ -5,14 +7,10 @@ export const Helpers = (name, data, required) => {
       case "nombre":
       case "apellido":
         //Aqui evaluaremos strings que NO pueden tener números
-  
         if (data === "" && required === true) {
-  
-          
           return {message: "Please fill the field", Helpers: false};
-  
           //Evaluamos mediante la expresión regular 
-        } else if (!/[a-z]/gi.test(data)) {
+        } else if (!/^$|[a-z]/gi.test(data)) {
           return {message: "Please fill with a valid text", Helpers: false};
         }
   
@@ -63,21 +61,20 @@ export const Helpers = (name, data, required) => {
       case "direction":
         if (data === "" && required === true) {
           return {message: "Please fill the field", Helpers: false};
-        } else if (!/^(?:\.{2})?(?:\/\.{2})*(\/[a-zA-Z0-9]+)+$/.test(data)) {
+        } else if (!/[a-z]/gi.test(data)) {
           return {message: "Invalid adress format", Helpers: false};
         }
         return {message: "", Helpers: true};
 
     
       case "fecha_nacimiento":
-        case "birth_date":
-        if (data === "" && required === true) {
-          return {message: "Please fill the field", Helpers: false};
-        } else if (!/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/.test(data)) {
-          return {message: "Invalid birth date format", Helpers: false};
+      case "birth_date":
+        let fecha_hoy = dayjs();
+        let years = fecha_hoy.diff(data, 'years');
+        if(years < 18){
+          return {message: "You must be 18", Helpers: false};
         }
         return {message: "", Helpers: true};
-  
       default:
         console.log("Field not recognized");
     }

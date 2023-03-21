@@ -1,10 +1,11 @@
 import Form from "react-bootstrap/Form";
 
-export const InputText = ( {className, type, name, placeholder, changeFunction, blurFunction } ) => {
+export const InputText = ( {className, type, name, placeholder, changeFunction, blurFunction, required } ) => {
     return (
       <>
       <Form.Control
       className={className} 
+      required={true}
       type={type}
       name={name}
       placeholder={placeholder}

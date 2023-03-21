@@ -5,9 +5,20 @@ import './Login.css'
 import { InputText } from '../../components/inputText/InputText';
 import React, { useState, useEffect } from "react";
 import { Helpers } from "../../helpers/Helpers";
-
+import { logMe } from '../../services/apiCalls';
+import { decodeToken } from 'react-jwt';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, userData } from '../userSlice';
 
 export const Login = () => {
+
+  const credentialRdx = useSelector(userData);
+
+  const navigate = useNavigate();
+
+  //Instancio Redux en modo escritura
+  const dispatch = useDispatch();
 
   //HOOK
   const [credential, setCredential] = useState({
@@ -37,6 +48,7 @@ export const Login = () => {
   });
 
   const [loginAct, setloginAct] = useState(false);
+  // const [welcome, setWelcome] = useState("");
 
   //USEEFFECT
 
@@ -70,6 +82,13 @@ export const Login = () => {
     setloginAct(true);
   });
 
+  useEffect(() => {
+    if (credentialRdx.credential.token) {
+      //Si No token...home redirect
+      navigate("/");
+    }
+  }, []);
+
   //FUNCIONES
   //Funcion de validacion
 
@@ -97,9 +116,41 @@ export const Login = () => {
       [e.target.name + "Error"]: error,
     }));
   };
-  const fakeRegister = () => {
-    console.log("victoria");
+
+  const logmee = () => {
+
+    logMe(credential)
+        .then(
+            respuesta => { 
+              console.log(respuesta)
+                let decodificado = decodeToken(respuesta.data)
+                console.log(respuesta.data)
+                let datosBackend = {
+                    token: respuesta.data,
+                    usuario: decodificado
+                }
+            
+            
+                    console.log(datosBackend)
+                //Este es el momento en el que guardo en REDUX
+                dispatch(login({credential: datosBackend}));
+  
+                // console.log(">> aquí sale el nombre",datosBackend.usuario.name)
+  
+                // setWelcome(`Hola de nuevo ${datosBackend.usuario.name}`);
+  
+                setTimeout(() => {
+                  navigate("/");
+                }, 1000);
+            }
+        )
+        .catch(error => console.log(error))
+  
   };
+  
+  // const fakeRegister = () => {
+  //   console.log("victoria");
+  // };
   return (
     <>
     <Container className='main main-size'>
@@ -132,7 +183,7 @@ export const Login = () => {
         </Form.Group>
         <div className='red'>{credentialError.passwordError}</div>
         <Button 
-        onClick={loginAct ? () => {fakeRegister();}: () => {}} variant="primary" >
+        onClick={loginAct ? () => {logmee();}: () => {}} variant="primary" >
         Login</Button>
       </Form>
     </Container>

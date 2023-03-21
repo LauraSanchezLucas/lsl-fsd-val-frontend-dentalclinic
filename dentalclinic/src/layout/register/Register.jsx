@@ -7,9 +7,12 @@ import { InputText } from '../../components/inputText/InputText';
 import './Register.css'
 import React, { useState, useEffect } from "react";
 import { Helpers } from "../../helpers/Helpers";
+import { registerMe } from '../../services/apiCalls';
+import { useNavigate } from 'react-router-dom';
+
 
 export const Register = () => {
-    
+    const navigate = useNavigate();
   //HOOK
   const [credential, setCredential] = useState({
     name: "",
@@ -19,6 +22,7 @@ export const Register = () => {
     email: "",
     birth_date: "",
     phone: "",
+    password: ""
   });
 
   //HANDLERS
@@ -38,8 +42,9 @@ export const Register = () => {
     nifValidation: false,
     directionValidation: false,
     emailValidation: false,
-    // birth_dateValidation: false,
+    birth_dateValidation: false,
     phoneValidation: false,
+    passwordValidation: false,
   })
 // Hook error
   const [credentialError, setCredentialError] = useState({
@@ -48,8 +53,9 @@ export const Register = () => {
     nifError: "",
     directionError: "",
     emailError: "",
-    // birth_dateError: "",
+    birth_dateError: "",
     phoneError: "",
+    passwordError: "",
   });
 
   const [registerAct, setRegisterAct] = useState(false);
@@ -58,7 +64,7 @@ export const Register = () => {
 
   //Este tipo de useEffect siempre se ejecuta cuando se actualice cualquier hook.....
   useEffect(() => {
-      console.log(credential)
+      
     //Recorremos el primer for in para ver si hay errores en las credenciales....
     for(let error in credentialError){
       if(credentialError[error] !== ""){
@@ -77,6 +83,7 @@ export const Register = () => {
     //El último cortafuegos será un for in que recorrerá el hook validationCredential que mirará si todas las credential no sólo
     //están rellenas, sino que también han sido validadas
     for(let Helpers in validationCredential){
+
       if(validationCredential[Helpers] === false){
         setRegisterAct(false);
         return;
@@ -113,9 +120,14 @@ export const Register = () => {
       [e.target.name + "Error"]: error,
     }));
   };
-  const fakeRegister = () => {
-    console.log("victoria");
+   const SubmitMe = () => {
+    registerMe(credential)
+    .then(
+        navigate("/login")
+    )
+    .catch(error => console.log(error))
   };
+
   return (
     <div className='main_register'>
       <Container>
@@ -125,8 +137,9 @@ export const Register = () => {
                   <Form.Label variant='white'>Name</Form.Label>
                   <InputText
                     className={"inputlogin"}
+                    required={true}
                     type={"text"} 
-                    name={"name"} 
+                    name={"name"}
                     placeholder={"Enter name"} 
                     changeFunction ={(e)=>inputHandler(e)}
                     blurFunction={(e) => checkError(e)}
@@ -193,6 +206,7 @@ export const Register = () => {
                     changeFunction ={(e)=>inputHandler(e)}
                     blurFunction={(e) => checkError(e)}
                     />
+                    <div className='red'>{credentialError.birth_dateError}</div>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridZip">
                   <Form.Label>Phone</Form.Label>
@@ -206,10 +220,22 @@ export const Register = () => {
                     />
                     <div className='red'>{credentialError.phoneError}</div>
                   </Form.Group>
+                  <Form.Group as={Col} controlId="formPasswordZip">
+                  <Form.Label>Password</Form.Label>
+                  <InputText
+                    className={"inputlogin"}
+                    type={"text"} 
+                    name={"password"} 
+                    placeholder={"Enter password"} 
+                    changeFunction ={(e)=>inputHandler(e)}
+                    blurFunction={(e) => checkError(e)}
+                    />
+                    <div className='red'>{credentialError.passwordError}</div>
+                  </Form.Group>
               </Row>
               <div className="buttonRegister">
-              <Button onClick={registerAct ? () => {fakeRegister();}: () => {}} variant="primary">Submit</Button>
-                              {/* registerAct ? () => { fakeRegister(); } : () => {}} */}
+                {/* TODO NO LLEGA A VICTORIA ENTRA EN EL CONSOLE.LOG SI */}
+              <Button onClick={ SubmitMe } variant="primary">Submit</Button>
               </div>
           </Form>
       </Container>
