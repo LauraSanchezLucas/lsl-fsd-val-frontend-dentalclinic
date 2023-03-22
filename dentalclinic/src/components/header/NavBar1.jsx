@@ -20,6 +20,14 @@ export const NavBar1 = () => {
   const dataCredentialRdx = useSelector(userData);
   console.log(dataCredentialRdx)
 
+  const logout = () => {
+    // dispatch(logout(dataCredentialsRdx = ""));
+    dispatch(userout({credentials:{}, token:''}));
+    return navigate("/");
+    };
+    
+  
+
   return (
     <Navbar sticky="top" collapseOnSelect expand="md" className='header-NavBar'>
       <Container>
@@ -32,38 +40,40 @@ export const NavBar1 = () => {
             <Nav.Link as={Link} to="/treatment" >Treatments</Nav.Link>
             <Nav.Link as={Link} to="/aboutus" className='size'>About us</Nav.Link>
           </Nav>
-              {dataCredentialRdx.credentials.role.includes('patient') ? (
-                <>
-                  <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                  <Nav.Link as={Link} to="/appointment">Appointment</Nav.Link>
-                  <Nav.Link as={Link} to="/">Logout</Nav.Link>
-                </>
-              ):
-              dataCredentialRdx.credentials.role.includes('doctor') ? (
-                <>
-                  <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                  <Nav.Link as={Link} to="/users">Users</Nav.Link>
-                  <Nav.Link as={Link} to="/">Logout</Nav.Link>
-                </>
-              ):
-            dataCredentialRdx.credentials.role.includes('admin') ? (
-              <>
-              <Nav.Link as={Link} to="/">Profile</Nav.Link>
-              <Nav.Link as={Link} to="/users">Users</Nav.Link>
-              <Nav.Link as={Link} to="/">Logout</Nav.Link>
-              </>
-              ):
-              dataCredentialRdx.credentials.role.includes('')( 
+              {!dataCredentialRdx?.credentials?.role ? ( 
               <>
               <Nav.Link as={Link} to="/login" >Login</Nav.Link>
               <Nav.Link as={Link} to="/register" >Register</Nav.Link>
               </>
-              )
+              ):
+              dataCredentialRdx?.credentials?.role?.includes('patient') ? (
+                <>
+                  <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+                  <Nav.Link as={Link} to="/appointment">Appointment</Nav.Link>
+                  <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
+                </>
+              ):
+              dataCredentialRdx?.credentials?.role?.includes('doctor') ? (
+                <>
+                  <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+                  <Nav.Link as={Link} to="/users">Users</Nav.Link>
+                  <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
+                </>
+              ):
+            dataCredentialRdx?.credentials?.role?.includes('admin') ? (
+              <>
+              <Nav.Link as={Link} to="/">Profile</Nav.Link>
+              <Nav.Link as={Link} to="/users">Users</Nav.Link>
+              <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
+              </>
+              ):(<Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>)
               }
         </Navbar.Collapse>
       </Container>
     </Navbar>
   )
 }
+
+
 
 
