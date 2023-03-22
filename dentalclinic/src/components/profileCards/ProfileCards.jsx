@@ -7,10 +7,13 @@ export const ProfileCards = () => {
       <Card className="yo">
         {/* <Card.Img variant="top" src={personaje.image}/> */}
         <Card.Body>
-          <Card.Title>{user.user}</Card.Title>
-          <Card.Text>Description: {treatment.description}</Card.Text>
-          <Card.Text>Price: {treatment.price} €</Card.Text>
-          <Card.Text>Price: {treatment.price} €</Card.Text>
+          <Card.Title>Name:{user.name}</Card.Title>
+          <Card.Text>Surname: {user.surname}</Card.Text>
+          <Card.Text>Nif: {tuser.nif}</Card.Text>
+          <Card.Text>birth date: {user.birth_date}</Card.Text>
+          <Card.Text>Direction: {user.direction}</Card.Text>
+          <Card.Text>Email: {user.email}</Card.Text>
+          <Card.Text>Phone: {user.phone}</Card.Text>"
         </Card.Body>
       </Card>
     </Container>

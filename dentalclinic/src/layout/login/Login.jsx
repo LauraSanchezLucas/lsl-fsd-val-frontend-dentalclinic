@@ -82,13 +82,6 @@ export const Login = () => {
     setloginAct(true);
   });
 
-  useEffect(() => {
-    if (credentialRdx.credential.token) {
-      //Si No token...home redirect
-      navigate("/");
-    }
-  }, []);
-
   //FUNCIONES
   //Funcion de validacion
 
@@ -123,17 +116,17 @@ export const Login = () => {
         .then(
             respuesta => { 
               console.log(respuesta)
-                let decodificado = decodeToken(respuesta.data)
-                console.log(respuesta.data)
+              console.log(respuesta.data.token)
+                let decodificado = decodeToken(respuesta.data.token)
+                console.log(decodificado)
                 let datosBackend = {
-                    token: respuesta.data,
-                    usuario: decodificado
+                    token: respuesta.data.token,
+                    usuario: decodificado.userId,
+                    role: decodificado.roleId
                 }
-            
-            
-                    console.log(datosBackend)
                 //Este es el momento en el que guardo en REDUX
-                dispatch(login({credential: datosBackend}));
+                dispatch(login({credentials: datosBackend}));
+                console.log(datosBackend, 'hola')
   
                 // console.log(">> aquí sale el nombre",datosBackend.usuario.name)
   
@@ -145,12 +138,7 @@ export const Login = () => {
             }
         )
         .catch(error => console.log(error))
-  
   };
-  
-  // const fakeRegister = () => {
-  //   console.log("victoria");
-  // };
   return (
     <>
     <Container className='main main-size'>

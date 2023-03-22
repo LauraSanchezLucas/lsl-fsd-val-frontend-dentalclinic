@@ -18,6 +18,5 @@ export const registerMe = async (body) => {
 //         'Authorization': 'Bearer '+ token,  
 //       }
 //     };
-  
 //     return await axios.get(`${root}/profile`, config);
 //   }
