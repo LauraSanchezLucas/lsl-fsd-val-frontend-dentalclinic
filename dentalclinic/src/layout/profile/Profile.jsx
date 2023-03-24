@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/esm/Container';
+import { getUserProfile } from '../../services/apiCalls';
+import { userData } from '../userSlice';
+
+
+
 
 export const Profile = () => {
 
     const credentialRdx = useSelector(userData);
-
-    const navigate = useNavigate();
-  
-    //Instancio Redux en modo escritura
-    const dispatch = useDispatch();
-  
-    //HOOK
+    console.log(credentialRdx.credentials,'hola')
+    console.log(credentialRdx,'adios')
     const [user, setUser] = useState({
         name: "",
         surname: "",
@@ -21,14 +22,14 @@ export const Profile = () => {
         email: "",
         phone: ""
     });
-    //USEEFFECT
+
   
-    //Este tipo de useEffect siempre se ejecuta cuando se actualice cualquier hook.....
+    // Este tipo de useEffect siempre se ejecuta cuando se actualice cualquier hook.....
     useEffect(() => {
         if (user.name === "") {
-            getUserProfile(credentialRdx.credential.token)
+            getUserProfile(credentialRdx?.credentials?.token)
             .then((result) => {
-                console.log(result.data.user);
+              console.log(result.data, 'si')
                 setUser({
                     name: result.data.user.name,
                     surname: result.data.user.surname,
@@ -41,106 +42,23 @@ export const Profile = () => {
                 })
                 .catch((error) => console.log(error));
             }
-        }, [user]);
-        return (
-            <div className='main_register'>
-              <Container>
-                  <Form className='formularioRegistro'>
-                      <Row className="mb-3">
-                          <Form.Group as={Col} controlId="formGridEmail">
-                          <Form.Label variant='white'>Name</Form.Label>
-                          <InputText
-                            className={"inputlogin"}
-                            required={true}
-                            type={"text"} 
-                            name={"name"}
-                            placeholder={"Enter name"} 
-                            changeFunction ={(e)=>inputHandler(e)}
-                            blurFunction={(e) => checkError(e)}
-                            />
-                            <div className='red'>{credentialError.nameError}</div>
-                          </Form.Group>
-                          <Form.Group as={Col} controlId="formGridSurname">
-                          <Form.Label>Surname</Form.Label>
-                          <InputText
-                            className={"inputlogin"}
-                            type={"text"} 
-                            name={"surname"} 
-                            placeholder={"Enter surname"} 
-                            changeFunction ={(e)=>inputHandler(e)}
-                            blurFunction={(e) => checkError(e)}
-                            />
-                            <div className='red'>{credentialError.surnameError}</div>
-                          </Form.Group>
-                          <Form.Group as={Col} controlId="formGridNif">
-                          <Form.Label>Nif</Form.Label>
-                          <InputText
-                            className={"inputlogin"}
-                            type={"text"} 
-                            name={"nif"} 
-                            placeholder={"Enter nif"} 
-                            changeFunction ={(e)=>inputHandler(e)}
-                            blurFunction={(e) => checkError(e)}
-                            />
-                            <div className='red'>{credentialError.nifError}</div>
-                          </Form.Group>
-                      </Row>
-                      <Form.Group className="mb-3" controlId="formGridAddress2">
-                          <Form.Label>Address</Form.Label>
-                          <InputText
-                            className={"inputlogin"}
-                            type={"text"} 
-                            name={"direction"} 
-                            placeholder={"Enter adress"} 
-                            changeFunction ={(e)=>inputHandler(e)}
-                            blurFunction={(e) => checkError(e)}
-                            />
-                            <div className='red'>{credentialError.adressError}</div>
-                      </Form.Group>
-                      <Row className="mb-3">
-                          <Form.Group as={Col} controlId="formGridCity">
-                          <Form.Label>Email</Form.Label>
-                          <InputText
-                            className={"inputlogin"}
-                            type={"email"} 
-                            name={"email"} 
-                            placeholder={"Enter emil"} 
-                            changeFunction ={(e)=>inputHandler(e)}
-                            blurFunction={(e) => checkError(e)}
-                            />
-                            <div className='red'>{credentialError.emailError}</div>
-                          </Form.Group>
-                          <Form.Group as={Col} controlId="formGridState">
-                          <Form.Label>Birth date</Form.Label>
-                          <InputText
-                            className={"inputlogin"}
-                            type={"date"} 
-                            name={"birth_date"} 
-                            placeholder={"Enter birth of date"} 
-                            changeFunction ={(e)=>inputHandler(e)}
-                            blurFunction={(e) => checkError(e)}
-                            />
-                            <div className='red'>{credentialError.birth_dateError}</div>
-                          </Form.Group>
-                          <Form.Group as={Col} controlId="formGridZip">
-                          <Form.Label>Phone</Form.Label>
-                          <InputText
-                            className={"inputlogin"}
-                            type={"text"} 
-                            name={"phone"} 
-                            placeholder={"Enter phone"} 
-                            changeFunction ={(e)=>inputHandler(e)}
-                            blurFunction={(e) => checkError(e)}
-                            />
-                            <div className='red'>{credentialError.phoneError}</div>
-                          </Form.Group>
-                          </Row>
-                      <div className="buttonRegister">
-                      <Button onClick={ SubmitMe } variant="primary">Close</Button>
-                      </div>
-                  </Form>
-              </Container>
-              </div>
-          );
-        }
-        
+        }, []);
+  return (
+    <>
+     <Container >
+      <Card className="yo">
+        {/* <Card.Img variant="top" src={personaje.image}/> */}
+        <Card.Body>
+          <Card.Title>Name:{user.name}</Card.Title>
+          <Card.Text>Surname:{user.surname}  </Card.Text>
+          <Card.Text>Nif: {user.nif}</Card.Text>
+          <Card.Text>birth date:{user.birth_date} </Card.Text>
+          <Card.Text>Direction:{user.direction} </Card.Text>
+          <Card.Text>Email:{user.email} </Card.Text>
+          <Card.Text>Phone: {user.phone}</Card.Text>
+        </Card.Body>
+      </Card>
+    </Container>
+    </>
+  )
+}

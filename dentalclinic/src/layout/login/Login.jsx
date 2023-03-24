@@ -8,12 +8,11 @@ import { Helpers } from "../../helpers/Helpers";
 import { logMe } from '../../services/apiCalls';
 import { decodeToken } from 'react-jwt';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, userData } from '../userSlice';
+import { useDispatch } from 'react-redux';
+import { login } from '../userSlice';
 
 export const Login = () => {
 
-  const credentialRdx = useSelector(userData);
 
   const navigate = useNavigate();
 
@@ -48,7 +47,7 @@ export const Login = () => {
   });
 
   const [loginAct, setloginAct] = useState(false);
-  // const [welcome, setWelcome] = useState("");
+ 
 
   //USEEFFECT
 
@@ -115,7 +114,7 @@ export const Login = () => {
     logMe(credential)
         .then(
             respuesta => { 
-              console.log(respuesta)
+              // console.log(respuesta)
               console.log(respuesta.data.token)
                 let decodificado = decodeToken(respuesta.data.token)
                 console.log(decodificado)
@@ -126,11 +125,8 @@ export const Login = () => {
                 }
                 //Este es el momento en el que guardo en REDUX
                 dispatch(login({credentials: datosBackend}));
-                console.log(datosBackend, 'hola')
-  
-                // console.log(">> aquí sale el nombre",datosBackend.usuario.name)
-  
-                // setWelcome(`Hola de nuevo ${datosBackend.usuario.name}`);
+                // console.log(datosBackend, 'hola')
+
   
                 setTimeout(() => {
                   navigate("/");

@@ -6,6 +6,7 @@ import { Login } from "./layout/login/Login";
 import { Profile } from "./layout/profile/Profile";
 import { Register } from "./layout/register/Register";
 import { Treatments } from "./layout/treatment/Treatment";
+
 import "./MainApp.css"
 
 export const MainApp = () => {

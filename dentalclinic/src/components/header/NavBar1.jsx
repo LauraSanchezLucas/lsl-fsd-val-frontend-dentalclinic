@@ -39,7 +39,6 @@ export const NavBar1 = () => {
           <Nav>
             <Nav.Link as={Link} to="/treatment" >Treatments</Nav.Link>
             <Nav.Link as={Link} to="/aboutus" className='size'>About us</Nav.Link>
-          </Nav>
               {!dataCredentialRdx?.credentials?.role ? ( 
               <>
               <Nav.Link as={Link} to="/login" >Login</Nav.Link>
@@ -62,12 +61,13 @@ export const NavBar1 = () => {
               ):
             dataCredentialRdx?.credentials?.role?.includes('admin') ? (
               <>
-              <Nav.Link as={Link} to="/">Profile</Nav.Link>
+              <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
               <Nav.Link as={Link} to="/users">Users</Nav.Link>
               <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
               </>
               ):(<Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>)
               }
+        </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
