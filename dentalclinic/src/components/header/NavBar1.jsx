@@ -62,7 +62,7 @@ export const NavBar1 = () => {
             dataCredentialRdx?.credentials?.role?.includes('admin') ? (
               <>
               <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-              <Nav.Link as={Link} to="/users">Users</Nav.Link>
+              <Nav.Link as={Link} to="/useradmin">Users</Nav.Link>
               <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
               </>
               ):(<Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>)

@@ -25,3 +25,13 @@ export const getUserProfile = async (token) => {
 
     return await axios.get(`${root}/allservice`);
   }
+
+  export const bringUsers = async (token) => {
+    let config = {
+
+      headers: { 
+        'Authorization': `Bearer ${token}`,  
+      }
+    };
+    return await axios.get(`${root}/getProfilesAdm`, config);
+  };
