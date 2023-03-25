@@ -1,12 +1,14 @@
-import { bringUsers } from "../../services/apiCalls";
+import { bringUsersDoctor } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { addChoosen } from '../detailSlice';
-// import { ProfileCards } from "../../components/profileCards/ProfileCards";
 
-export const AdminUsers = () => {
+
+
+
+export const DoctorUser = () => {
     
     const [users, setUsers] = useState([]);
 
@@ -17,7 +19,7 @@ export const AdminUsers = () => {
 
     useEffect(()=>{
         if(users.length === 0){
-            bringUsers(credentialRdx.credentials.token)
+            bringUsersDoctor(credentialRdx.credentials.token)
             .then(
                 result => {
                     console.log(result.data.user, 'tttttttt')
@@ -35,7 +37,7 @@ export const AdminUsers = () => {
         dispatch(addChoosen({ choosenObject: persona }))
         console.log(persona, 'yuuuuuuuu')
         setTimeout(()=>{
-            navigate("/profile");
+            navigate("/profiledoctoradmin");
         },500)
     }
   return (
@@ -50,8 +52,9 @@ export const AdminUsers = () => {
                             <div 
                                 onClick={()=>selected(persona)} 
                                 key={persona.id}>
-                                {persona.name}
-                                {persona.surname}
+                                    {persona.name}
+                                    {persona.surname}
+                                {/* <ProfileCards profilDoctor={persona} /> */}
                                 
                             </div>
                         )
@@ -69,4 +72,6 @@ export const AdminUsers = () => {
  </div>
 )
 }
+
+
 

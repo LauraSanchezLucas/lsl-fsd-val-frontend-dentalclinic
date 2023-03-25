@@ -49,20 +49,22 @@ export const NavBar1 = () => {
                 <>
                   <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                   <Nav.Link as={Link} to="/appointment">Appointment</Nav.Link>
+                  <Nav.Link as={Link} to="/bookappointment">Book Appointment</Nav.Link>
                   <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
                 </>
               ):
               dataCredentialRdx?.credentials?.role?.includes('doctor') ? (
                 <>
-                  <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                  <Nav.Link as={Link} to="/users">Users</Nav.Link>
+                  <Nav.Link as={Link} to="/profileDoctor">Profile</Nav.Link>
+                  <Nav.Link as={Link} to="/userdoctor">Users</Nav.Link>
                   <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
                 </>
               ):
             dataCredentialRdx?.credentials?.role?.includes('admin') ? (
               <>
               <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-              <Nav.Link as={Link} to="/useradmin">Users</Nav.Link>
+              <Nav.Link as={Link} to="/useradmin">admin</Nav.Link>
+              <Nav.Link as={Link} to="/bookappointment">Book Appointment</Nav.Link>
               <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
               </>
               ):(<Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>)
@@ -73,6 +75,7 @@ export const NavBar1 = () => {
     </Navbar>
   )
 }
+
 
 
 

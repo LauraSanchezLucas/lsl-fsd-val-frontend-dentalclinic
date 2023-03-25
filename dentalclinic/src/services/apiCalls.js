@@ -35,3 +35,24 @@ export const getUserProfile = async (token) => {
     };
     return await axios.get(`${root}/getProfilesAdm`, config);
   };
+  
+  export const bringUsersDoctor = async (token) => {
+    let config = {
+
+      headers: { 
+        'Authorization': `Bearer ${token}`,  
+      }
+    };
+    return await axios.get(`${root}/getProfilesDoc`, config);
+  };
+
+  export const getAppointment = async ( body, token) => {
+    let config = {
+
+      headers: { 
+        'Authorization': `Bearer ${token}`,  
+      }
+    };
+    return await axios.post(`${root}/app`, body, config);
+  };
+

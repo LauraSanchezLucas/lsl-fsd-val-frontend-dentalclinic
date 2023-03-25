@@ -8,7 +8,7 @@ import { userData } from '../userSlice';
 
 
 
-export const Profile = () => {
+export const ProfileUser = () => {
 
     const credentialRdx = useSelector(userData);
     console.log(credentialRdx.credentials,'hola')
@@ -45,7 +45,7 @@ export const Profile = () => {
         }, []);
   return (
     <>
-     <Container >
+     <Container > 
       <Card className="yo">
         {/* <Card.Img variant="top" src={personaje.image}/> */}
         <Card.Body>
