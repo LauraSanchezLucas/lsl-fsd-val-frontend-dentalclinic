@@ -14,7 +14,7 @@ export const BookAppointment = () => {
 // console.log(credentialsRdx)
 
   const [credential, setCredential] = useState({
-    user_id: credentialsRdx.credentials.usuario.userId ,
+    user_id: credentialsRdx.credentials.usuario ,
     service_id: "", 
     date: "", 
     hour: "", 
@@ -112,5 +112,3 @@ console.log(credential , 'eeeeeeeeeeee')
   </>
       );  
   }            
-
-

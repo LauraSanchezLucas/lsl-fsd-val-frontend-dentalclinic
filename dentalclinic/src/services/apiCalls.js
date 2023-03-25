@@ -53,6 +53,6 @@ export const getUserProfile = async (token) => {
         'Authorization': `Bearer ${token}`,  
       }
     };
-    return await axios.post(`${root}/app`, body, config);
+    return await axios.post(`${root}/app`,body, config);
   };
 
