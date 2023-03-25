@@ -13,6 +13,40 @@ export const BookAppointment = () => {
     const credentialsRdx = useSelector(userData);
 // console.log(credentialsRdx)
 
+const [treatments, setTreatments] = useState([
+  {
+    id: 1,
+    servicename: "Single dental implant"
+  },
+  {
+    id: 2,
+    servicename: "Fixed dental prosthesis"
+  },
+  {
+    id: 3,
+    servicename: "Invisible orthodontic"
+  },
+  {
+    id: 4,
+    servicename: "Dental cavities"
+  },
+  {
+    id: 5,
+    servicename: "Whitening"
+  },
+]);
+
+const [doctors, setDoctors] = useState([
+  {
+    id: 1,
+    schedulename: "morning"
+  },
+  {
+    id: 2,
+    schedulename: "afternoon"
+  }
+]);
+
   const [credential, setCredential] = useState({
     user_id: credentialsRdx.credentials.usuario ,
     service_id: "", 
@@ -58,7 +92,7 @@ console.log(credential , 'eeeeeeeeeeee')
                 blurFunction={(e) => checkError(e)} 
                 />
             </Form.Group> */}
-      <Form.Group>
+      {/* <Form.Group>
           <Form.Label>service:</Form.Label>
             <InputText className={ "inputBasicDesign"}
                 type={"integer"}
@@ -67,7 +101,15 @@ console.log(credential , 'eeeeeeeeeeee')
                 changeFunction={(e) => inputHandler(e)}
                 blurFunction={(e) => checkError(e)} 
                 />
-               </Form.Group>
+               </Form.Group> */}
+               <Form.Select name={"service_id"} onChange={(e) => inputHandler(e)} aria-label="Default select example">
+                                    <option>Choose your Treatment:</option>
+                                    {treatments.map((treatment) => {
+                                        return (
+                                            <option key={treatment.id} value={treatment.id}>{treatment.servicename}</option>
+                                        )
+                                    })}
+                                </Form.Select>
       <Form.Group>
            <Form.Label>Date:</Form.Label>
            <InputText className={"inputBasicDesign"}
@@ -88,8 +130,8 @@ console.log(credential , 'eeeeeeeeeeee')
                 changeFunction={(e) => inputHandler(e)} 
                 blurFunction={(e) => checkError(e)} />
       </Form.Group>
-      <Form.Group>
-           <Form.Label>Employee:</Form.Label>
+      {/* <Form.Group>
+           <Form.Label>Schedule:</Form.Label>
            <InputText className={"inputBasicDesign"}
                 type={"number"} 
                 maxLength={10}
@@ -98,7 +140,15 @@ console.log(credential , 'eeeeeeeeeeee')
                 required={true}
                 changeFunction={(e) => inputHandler(e)} 
                 blurFunction={(e) => checkError(e)} />
-      </Form.Group>
+      </Form.Group> */}
+      <Form.Select name={"employee_id"} onChange={(e) => inputHandler(e)} aria-label="Default select example">
+                                    <option>Choose Doctor Specialist:</option>
+                                    {doctors.map((doctor) => {
+                                        return (
+                                            <option key={doctor.id} value={doctor.id}>{doctor.schedulename}</option>
+                                        )
+                                    })}
+                                </Form.Select>
           </Form>      
           </Col> 
         <div>  

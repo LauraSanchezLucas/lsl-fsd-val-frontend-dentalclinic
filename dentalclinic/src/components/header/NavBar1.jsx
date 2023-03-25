@@ -10,9 +10,6 @@ import { userData } from '../../layout/userSlice';
 import { userout } from '../../layout/userSlice';
 
 
-
-
-
 export const NavBar1 = () => {
   
   const navigate = useNavigate();
