@@ -5,13 +5,13 @@ import { InputText } from '../../Components/InputText/InputText';
 import { getAppointment } from '../../Services/apiCalls';
 import { userData } from '../userSlice';
 import { useNavigate } from 'react-router-dom';
+import './BookAppointment.css';
 
 export const BookAppointment = () => {
 
     const navigate = useNavigate();
 
     const credentialsRdx = useSelector(userData);
-// console.log(credentialsRdx)
 
 const [treatments, setTreatments] = useState([
   {
@@ -73,35 +73,18 @@ const [doctors, setDoctors] = useState([
     getAppointment(credential, credentialsRdx.credentials.token)
     .then ( respuesta => { 
         setCredential(respuesta.data)
+        setTimeout(() => {
+          navigate("/");
+        }, 500);
     }) .catch(error => {setCredential(error.message)})
 }
-console.log(credential , 'eeeeeeeeeeee')
   return (
     <>
+    <div className='appointment-locat'>
     <Container className="container-register">
       <Row className="row-input">
         <Col md={12} lg={6} className="container-inputs">
           <Form>
-          {/* <Form.Group>
-          <Form.Label>Name</Form.Label>
-            <InputText className={ "inputBasicDesign"}
-                type={"integer"}
-                name={credentialsRdx.credentials.name}
-                required={true}
-                changeFunction={(e) => inputHandler(e)}
-                blurFunction={(e) => checkError(e)} 
-                />
-            </Form.Group> */}
-      {/* <Form.Group>
-          <Form.Label>service:</Form.Label>
-            <InputText className={ "inputBasicDesign"}
-                type={"integer"}
-                name={"service_id"}
-                required={true}
-                changeFunction={(e) => inputHandler(e)}
-                blurFunction={(e) => checkError(e)} 
-                />
-               </Form.Group> */}
                <Form.Label>Treatment:</Form.Label>
                <Form.Select name={"service_id"} onChange={(e) => inputHandler(e)} aria-label="Default select example">
                                     <option>Choose your Treatment:</option>
@@ -131,20 +114,9 @@ console.log(credential , 'eeeeeeeeeeee')
                 changeFunction={(e) => inputHandler(e)} 
                 blurFunction={(e) => checkError(e)} />
       </Form.Group>
-      {/* <Form.Group>
-           <Form.Label>Schedule:</Form.Label>
-           <InputText className={"inputBasicDesign"}
-                type={"number"} 
-                maxLength={10}
-                name={"employee_id"} 
-                placeholder={"employee"} 
-                required={true}
-                changeFunction={(e) => inputHandler(e)} 
-                blurFunction={(e) => checkError(e)} />
-      </Form.Group> */}
       <Form.Label>Schedule:</Form.Label>
       <Form.Select name={"employee_id"} onChange={(e) => inputHandler(e)} aria-label="Default select example">
-                                    <option>Choose Doctor Specialist:</option>
+                                    <option>Choose schedule:</option>
                                     {doctors.map((doctor) => {
                                         return (
                                             <option key={doctor.id} value={doctor.id}>{doctor.schedulename}</option>
@@ -153,14 +125,15 @@ console.log(credential , 'eeeeeeeeeeee')
                                 </Form.Select>
           </Form>      
           </Col> 
-        <div>  
+        <div className='b1'>  
         <Button
         onClick={bookApp} variant="primary">
-      Register me!
+      Book!
       </Button>
     </div>
       </Row>
     </Container>
+    </div>
   </>
       );  
   }            

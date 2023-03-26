@@ -3,7 +3,7 @@ import Col from 'react-bootstrap/Col';
 import { TreatmentCard } from '../../components/treatments/TreatmentCard';
 import { DataBase } from '../../dataBase/DataBase';
 import Row from "react-bootstrap/esm/Row";
-import './Treatment.css'
+
 
 export const Treatments = () => {
   return (

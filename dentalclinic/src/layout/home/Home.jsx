@@ -39,7 +39,7 @@ export const Home = () => {
 
         <Carousel.Caption>
           <h3>We want the best for your smile.</h3>
-          <p>At Laura Sanchez Dental Clinic we have been with the mission of making people smile for more than a hundred years.  It is said soon, it is 103 years of history and we hope that there will be many more with you. Therefore, we offer you the best dental aesthetics and implantology, using the latest technologies and staying at the forefront since 1917. In the city of Valencia, we offer personalized attention, with payment facilities and complete revisions.</p>
+          <p className='carrusel-3p'>At Laura Sanchez Dental Clinic we have been with the mission of making people smile for more than a hundred years.  It is said soon, it is 103 years of history and we hope that there will be many more with you. Therefore, we offer you the best dental aesthetics and implantology, using the latest technologies and staying at the forefront since 1917. In the city of Valencia, we offer personalized attention, with payment facilities and complete revisions.</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

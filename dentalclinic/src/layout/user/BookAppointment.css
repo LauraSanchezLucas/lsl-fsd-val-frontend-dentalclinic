@@ -1,0 +1,11 @@
+.appointment-locat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row-input, .b1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

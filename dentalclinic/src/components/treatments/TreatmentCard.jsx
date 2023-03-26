@@ -7,8 +7,7 @@ export const TreatmentCard = ({treatment}) => {
   return (
   
     <Container >
-      <Card className="yo">
-        {/* <Card.Img variant="top" src={personaje.image}/> */}
+      <Card>
         <Card.Body>
           <Card.Title>{treatment.treatment}</Card.Title>
           <Card.Text>Description: {treatment.description}</Card.Text>

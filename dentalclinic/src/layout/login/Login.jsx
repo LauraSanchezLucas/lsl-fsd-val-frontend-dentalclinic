@@ -53,7 +53,7 @@ export const Login = () => {
 
   //Este tipo de useEffect siempre se ejecuta cuando se actualice cualquier hook.....
   useEffect(() => {
-      console.log(credential)
+    
     //Recorremos el primer for in para ver si hay errores en las credenciales....
     for(let error in credentialError){
       if(credentialError[error] !== ""){
@@ -114,10 +114,7 @@ export const Login = () => {
     logMe(credential)
         .then(
             respuesta => { 
-              // console.log(respuesta)
-              console.log(respuesta.data.token)
                 let decodificado = decodeToken(respuesta.data.token)
-                console.log(decodificado)
                 let datosBackend = {
                     token: respuesta.data.token,
                     usuario: decodificado.userId,
@@ -125,12 +122,12 @@ export const Login = () => {
                 }
                 //Este es el momento en el que guardo en REDUX
                 dispatch(login({credentials: datosBackend}));
-                // console.log(datosBackend, 'hola')
+   
 
   
                 setTimeout(() => {
                   navigate("/");
-                }, 1000);
+                }, 500);
             }
         )
         .catch(error => console.log(error))
@@ -146,7 +143,7 @@ export const Login = () => {
            className={"inputlogin"}
            type={"email"} 
            name={'email'} 
-           placeholder={"Enter email"} 
+           placeholder={"Enter your email"} 
            changeFunction ={(e)=>inputHandler(e)}
            blurFunction={(e) => checkError(e)}
            />
@@ -159,7 +156,7 @@ export const Login = () => {
           className={"inputlogin"}
           type={"password"} 
           name={'password'} 
-          placeholder={"Password"}
+          placeholder={"Enter your password"}
           changeFunction ={(e)=>inputHandler(e)}
           blurFunction={(e) => checkError(e)}
           />
