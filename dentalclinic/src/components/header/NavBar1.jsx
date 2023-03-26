@@ -8,6 +8,7 @@ import logo from "../../assets/yo.png"
 import { useDispatch, useSelector } from 'react-redux';
 import { userData } from '../../layout/userSlice';
 import { userout } from '../../layout/userSlice';
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 
 export const NavBar1 = () => {
@@ -26,7 +27,7 @@ export const NavBar1 = () => {
   
 
   return (
-    <Navbar sticky="top" collapseOnSelect expand="md" className='header-NavBar'>
+    <Navbar sticky="top" collapseOnSelect expand="sm" className='header-NavBar'>
       <Container>
         <Container>
           <Nav.Link as={Link} to="/"><Image className="logo" src={logo}></Image></Nav.Link>
@@ -44,26 +45,29 @@ export const NavBar1 = () => {
               ):
               dataCredentialRdx?.credentials?.role?.includes('patient') ? (
                 <>
-                  <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                  <Nav.Link as={Link} to="/seeappointment">See Appointment</Nav.Link>
-                  <Nav.Link as={Link} to="/bookappointment">Book Appointment</Nav.Link>
-                  <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
+                <NavDropdown title="Menu" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                  <NavDropdown.Item href="/seeappointment">View Appointment</NavDropdown.Item>
+                  <NavDropdown.Item href="/bookappointment">Book Appointment</NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
                 </>
               ):
               dataCredentialRdx?.credentials?.role?.includes('doctor') ? (
                 <>
-                  <Nav.Link as={Link} to="/profileDoctor">Profile</Nav.Link>
-                  <Nav.Link as={Link} to="/seedocappointment">See Appointment</Nav.Link>
-                  <Nav.Link as={Link} to="/userdoctor">Users</Nav.Link>
+                  <Nav.Link as={Link} to="/seedocappointment" className='doctor-size'>View Appointment</Nav.Link>
                   <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
                 </>
               ):
             dataCredentialRdx?.credentials?.role?.includes('admin') ? (
               <>
-              <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-              <Nav.Link as={Link} to="/useradmin">admin</Nav.Link>
-              <Nav.Link as={Link} to="/bookappointment">Book Appointment</Nav.Link>
-              <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
+                <NavDropdown title="Menu" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                  <NavDropdown.Item href="/useradmin">View all users</NavDropdown.Item>
+                  <NavDropdown.Item href="/bookappointment">Book Appointment</NavDropdown.Item>
+                  {/* <NavDropdown.Item href="/seedocappointment">View Appointment</NavDropdown.Item> */}
+                </NavDropdown>
+                <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
               </>
               ):(<Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>)
               }
