@@ -65,7 +65,7 @@ export const NavBar1 = () => {
                   <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="/useradmin">View all users</NavDropdown.Item>
                   <NavDropdown.Item href="/bookappointment">Book Appointment</NavDropdown.Item>
-                  {/* <NavDropdown.Item href="/seedocappointment">View Appointment</NavDropdown.Item> */}
+                  <NavDropdown.Item href="/seeadmappointment">View Appointment</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
               </>

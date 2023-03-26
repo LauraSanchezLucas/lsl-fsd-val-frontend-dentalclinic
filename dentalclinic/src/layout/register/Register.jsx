@@ -234,7 +234,6 @@ export const Register = () => {
                   </Form.Group>
               </Row>
               <div className="buttonRegister">
-                {/* TODO NO LLEGA A VICTORIA ENTRA EN EL CONSOLE.LOG SI */}
               <Button onClick={ SubmitMe } variant="primary">Submit</Button>
               </div>
           </Form>

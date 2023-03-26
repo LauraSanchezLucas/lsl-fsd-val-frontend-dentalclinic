@@ -21,9 +21,9 @@ export const SeeAppointment = () => {
             .catch(error => console.log(error));
         }
     }, [appointments])
-    console.log(appointments, 'hhhhhh')
+  
   return (
-    <div>
+    <div className='b1 b2'>
     {  appointments.length > 0 ? 
 
         (<div>
@@ -34,10 +34,12 @@ export const SeeAppointment = () => {
                         <div
                             onClick={()=>selected(appoint)}
                             key={appoint.id}>
-                            {appoint.id} &nbsp;
-                            {appoint.hour} &nbsp;
-                            {appoint.date} &nbsp;
-                            {appoint.Employee.User.name}
+                                <ul>
+                            {appoint.id}
+                            <strong>Hour:</strong> &nbsp; {appoint.hour} &nbsp;
+                            <strong>Date:</strong> &nbsp; {appoint.date} &nbsp;
+                            <strong>Doctor:</strong> &nbsp; {appoint.Employee.User.name} &nbsp;
+                            </ul>
                         </div>
                     )
                 }

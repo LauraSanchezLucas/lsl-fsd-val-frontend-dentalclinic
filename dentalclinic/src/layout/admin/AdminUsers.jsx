@@ -39,7 +39,7 @@ export const AdminUsers = () => {
         },500)
     }
   return (
-    <div>
+    <div className="b1" >
     {  users.length > 0 ? 
 
         (<div>
@@ -50,9 +50,9 @@ export const AdminUsers = () => {
                             <div 
                                 onClick={()=>selected(persona)} 
                                 key={persona.id}>
-                                {persona.name}
-                                {persona.surname}
-                                
+                                <strong>{persona.name}&nbsp;</strong>
+                                {persona.surname}&nbsp;
+                                <hr></hr>
                             </div>
                         )
                     }

@@ -8,4 +8,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2em;
+    margin-top: 1em;
+}
+.b2{
+    height: 45vh;
 }

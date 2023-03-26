@@ -74,5 +74,12 @@ export const getUserProfile = async (token) => {
     };
     return await axios.get(`${root}/getAppDoc`, config, token);
   };
-
+  export const getAdminAppointments = async ( token) => {
+    let config = {
+      headers: { 
+        'Authorization': `Bearer ${token}`,  
+      }
+    };
+    return await axios.get(`${root}/getAppAdm`, config, token);
+  };
   

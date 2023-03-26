@@ -54,7 +54,7 @@ export const DoctorUser = () => {
                                 key={persona.id}>
                                     {persona.name}
                                     {persona.surname}
-                                {/* <ProfileCards profilDoctor={persona} /> */}
+
                                 
                             </div>
                         )

@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Footer1 } from "./components/footer/Footer1";
 import { NavBar1 } from "./components/header/NavBar1";
 import { AboutUs } from "./layout/aboutus/AboutUs";
+import { AdminAppointments } from "./layout/admin/AdminAppointments";
 import { AdminUsers } from "./layout/admin/AdminUsers";
 import { DoctorAppointments } from "./layout/doctor/DoctorAppointments";
 import { DoctorUser } from "./layout/doctor/DoctorUser";
@@ -31,6 +32,7 @@ export const MainApp = () => {
         <Route path="/bookappointment" element={<BookAppointment />} />
         <Route path="/seeappointment" element={<SeeAppointment />} />
         <Route path="/seedocappointment" element={<DoctorAppointments />} />
+        <Route path="/seeadmappointment" element={<AdminAppointments />} />
       </Routes>
       <Footer1/>
     </div>
