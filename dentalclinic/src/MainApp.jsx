@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Footer1 } from "./components/footer/Footer1";
 import { NavBar1 } from "./components/header/NavBar1";
+import { AboutUs } from "./layout/aboutus/AboutUs";
 import { AdminUsers } from "./layout/admin/AdminUsers";
 import { DoctorAppointments } from "./layout/doctor/DoctorAppointments";
 import { DoctorUser } from "./layout/doctor/DoctorUser";
@@ -20,6 +21,7 @@ export const MainApp = () => {
       <NavBar1 />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/treatment" element={<Treatments />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

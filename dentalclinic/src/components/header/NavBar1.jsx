@@ -27,7 +27,7 @@ export const NavBar1 = () => {
   
 
   return (
-    <Navbar sticky="top" collapseOnSelect expand="sm" className='header-NavBar'>
+    <Navbar collapseOnSelect expand="sm" className='header-NavBar'>
       <Container>
         <Container>
           <Nav.Link as={Link} to="/"><Image className="logo" src={logo}></Image></Nav.Link>
