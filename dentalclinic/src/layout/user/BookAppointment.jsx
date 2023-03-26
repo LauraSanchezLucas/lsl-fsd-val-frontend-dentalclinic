@@ -102,6 +102,7 @@ console.log(credential , 'eeeeeeeeeeee')
                 blurFunction={(e) => checkError(e)} 
                 />
                </Form.Group> */}
+               <Form.Label>Treatment:</Form.Label>
                <Form.Select name={"service_id"} onChange={(e) => inputHandler(e)} aria-label="Default select example">
                                     <option>Choose your Treatment:</option>
                                     {treatments.map((treatment) => {
@@ -141,6 +142,7 @@ console.log(credential , 'eeeeeeeeeeee')
                 changeFunction={(e) => inputHandler(e)} 
                 blurFunction={(e) => checkError(e)} />
       </Form.Group> */}
+      <Form.Label>Schedule:</Form.Label>
       <Form.Select name={"employee_id"} onChange={(e) => inputHandler(e)} aria-label="Default select example">
                                     <option>Choose Doctor Specialist:</option>
                                     {doctors.map((doctor) => {

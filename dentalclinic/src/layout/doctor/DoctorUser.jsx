@@ -36,9 +36,9 @@ export const DoctorUser = () => {
 
         dispatch(addChoosen({ choosenObject: persona }))
         console.log(persona, 'yuuuuuuuu')
-        setTimeout(()=>{
-            navigate("/profiledoctoradmin");
-        },500)
+        // setTimeout(()=>{
+        //     navigate("/profiledoctoradmin");
+        // },500)
     }
   return (
     <div>

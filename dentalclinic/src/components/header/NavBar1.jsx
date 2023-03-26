@@ -45,7 +45,7 @@ export const NavBar1 = () => {
               dataCredentialRdx?.credentials?.role?.includes('patient') ? (
                 <>
                   <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                  <Nav.Link as={Link} to="/appointment">Appointment</Nav.Link>
+                  <Nav.Link as={Link} to="/seeappointment">See Appointment</Nav.Link>
                   <Nav.Link as={Link} to="/bookappointment">Book Appointment</Nav.Link>
                   <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
                 </>
@@ -53,6 +53,7 @@ export const NavBar1 = () => {
               dataCredentialRdx?.credentials?.role?.includes('doctor') ? (
                 <>
                   <Nav.Link as={Link} to="/profileDoctor">Profile</Nav.Link>
+                  <Nav.Link as={Link} to="/seedocappointment">See Appointment</Nav.Link>
                   <Nav.Link as={Link} to="/userdoctor">Users</Nav.Link>
                   <Nav.Link as={Link} to="/" onClick={()=> logout()}>Logout</Nav.Link>
                 </>
