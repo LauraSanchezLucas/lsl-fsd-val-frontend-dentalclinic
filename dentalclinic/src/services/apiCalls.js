@@ -2,6 +2,7 @@ import axios from "axios";
 
 const root = "https://lsl-fsd-val-dentalclinic-production.up.railway.app";
 
+
 export const logMe = async (body) => {
   return await axios.post(`${root}/login`, body);
 };
