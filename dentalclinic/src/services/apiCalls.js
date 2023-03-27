@@ -1,85 +1,77 @@
-import axios from 'axios';
+import axios from "axios";
 
-const root = 'http://localhost:3000'
+const root = "http://localhost:3000";
 
 export const logMe = async (body) => {
-
-    return await axios.post(`${root}/login`, body);
+  return await axios.post(`${root}/login`, body);
 };
 
 export const registerMe = async (body) => {
-
-    return await axios.post(`${root}/register`, body);
+  return await axios.post(`${root}/register`, body);
 };
 
 export const getUserProfile = async (token) => {
-    let config = {
-      headers: { 
-        'Authorization': 'Bearer '+ token,  
-      }
-    };
-    return await axios.get(`${root}/profile`, config);
+  let config = {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
   };
+  return await axios.get(`${root}/profile`, config);
+};
 
-  export const getAllTreatments = async () => {
+export const getAllTreatments = async () => {
+  return await axios.get(`${root}/allservice`);
+};
 
-    return await axios.get(`${root}/allservice`);
-  }
-
-  export const bringUsers = async (token) => {
-    let config = {
-
-      headers: { 
-        'Authorization': `Bearer ${token}`,  
-      }
-    };
-    return await axios.get(`${root}/getProfilesAdm`, config);
+export const bringUsers = async (token) => {
+  let config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
-  
-  export const bringUsersDoctor = async (token) => {
-    let config = {
+  return await axios.get(`${root}/getProfilesAdm`, config);
+};
 
-      headers: { 
-        'Authorization': `Bearer ${token}`,  
-      }
-    };
-    return await axios.get(`${root}/getProfilesDoc`, config);
+export const bringUsersDoctor = async (token) => {
+  let config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
+  return await axios.get(`${root}/getProfilesDoc`, config);
+};
 
-  export const getAppointment = async ( body, token) => {
-    let config = {
-
-      headers: { 
-        'Authorization': `Bearer ${token}`,  
-      }
-    };
-    return await axios.post(`${root}/app`,body, config);
+export const getAppointment = async (body, token) => {
+  let config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
+  return await axios.post(`${root}/app`, body, config);
+};
 
-  export const bringAppointment = async ( token) => {
-    let config = {
+export const bringAppointment = async (token) => {
+  let config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return await axios.get(`${root}/getApp`, config);
+};
 
-      headers: { 
-        'Authorization': `Bearer ${token}`,  
-      }
-    };
-    return await axios.get(`${root}/getApp`, config);
+export const getdoctorAppointments = async (token) => {
+  let config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
-
-  export const getdoctorAppointments = async ( token) => {
-    let config = {
-      headers: { 
-        'Authorization': `Bearer ${token}`,  
-      }
-    };
-    return await axios.get(`${root}/getAppDoc`, config, token);
+  return await axios.get(`${root}/getAppDoc`, config, token);
+};
+export const getAdminAppointments = async (token) => {
+  let config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
-  export const getAdminAppointments = async ( token) => {
-    let config = {
-      headers: { 
-        'Authorization': `Bearer ${token}`,  
-      }
-    };
-    return await axios.get(`${root}/getAppAdm`, config, token);
-  };
-  
+  return await axios.get(`${root}/getAppAdm`, config, token);
+};
