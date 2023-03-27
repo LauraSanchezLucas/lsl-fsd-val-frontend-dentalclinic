@@ -1,8 +1,8 @@
 import './Home.css'
 import Carousel from 'react-bootstrap/Carousel';
-import A1 from '../../assets/A1.jpeg'
-import A2 from '../../assets/A2.jpeg'
-import A3 from '../../assets/A3.jpeg'
+import A1 from '../../assets/A1.jpg'
+import A2 from '../../assets/A2.jpg'
+import A3 from '../../assets/A3.jpg'
 
 export const Home = () => {
   return (

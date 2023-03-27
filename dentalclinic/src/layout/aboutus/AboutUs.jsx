@@ -1,8 +1,8 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
-import doctor1 from '../../assets/doctor1.jpeg';
-import doctor2 from '../../assets/doctor2.jpeg';
-import doctor3 from '../../assets/doctor3.jpeg'
+import doctor1 from '../../assets/doctor1.jpg';
+import doctor2 from '../../assets/doctor2.jpg';
+import doctor3 from '../../assets/doctor3.jpg'
 
 export const AboutUs = () => {
   return (

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const root = "http://localhost:3000";
+const root = "lsl-fsd-val-dentalclinic-production.up.railway.app";
 
 export const logMe = async (body) => {
   return await axios.post(`${root}/login`, body);
